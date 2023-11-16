@@ -140,7 +140,7 @@
     state: fist
   - type: MeleeWeapon
     animation: WeaponArcFist
-    attackRate: 0.8
+    attackRate: 1.2
     damage:
       types:
         Blunt: 8
