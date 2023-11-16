@@ -567,6 +567,12 @@
   id: HidesHair # for headwear.
 
 - type: Tag
+  id: HidesHead # for mutations.
+
+- type: Tag
+  id: HidesLegs # for mutations.
+
+- type: Tag
   id: HighRiskItem
 
 - type: Tag

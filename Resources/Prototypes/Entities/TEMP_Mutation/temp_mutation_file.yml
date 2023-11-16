@@ -15,6 +15,25 @@
     sprintModifier: 0.8
 
 - type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesMutationSpider
+  name: spider legs
+  description: Spider legs woven from meat. You can see bones sticking out from the inside in some places.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/leg_spider.rsi
+    state: icon
+  - type: Clothing
+    sprite: Objects/Mutations/leg_spider.rsi
+  - type: NoSlip
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.2
+  - type: Tag
+    tags:
+    - HidesLegs
+
+- type: entity
   name: flesh blade
   parent: ArmBlade
   id: MutationFlashBlade
@@ -59,7 +78,11 @@
     sprite: Objects/Mutations/head_snake.rsi
   - type: Clothing
     sprite: Objects/Mutations/head_snake.rsi
-
+  - type: Tag
+    tags:
+    - HidesHair
+    - HidesHead
+  
 - type: entity
   name: spiked bone shield
   parent: BaseShield
