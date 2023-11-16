@@ -64,14 +64,14 @@
 - type: entity
   name: spiked bone shield
   parent: BaseShield
-  id: MutationSpikedBoneShield
+  id: MutationHandBoneShield
   description: A sturdy spiked bone shield, with thin veins of flesh between the bones.
   components:
     - type: Sprite
-      sprite: Objects/Mutations/spiked_bone_shield.rsi
+      sprite: Objects/Mutations/hand_bone_shield.rsi
       state: spiked-icon
     - type: Item
-      sprite: Objects/Mutations/spiked_bone_shield.rsi
+      sprite: Objects/Mutations/hand_bone_shield.rsi
       size: Ginormous
       heldPrefix: spiked
     - type: Blocking
@@ -92,3 +92,36 @@
           Slash: 1
           Piercing: 1
           Heat: 1
+
+- type: entity
+  id: MutationWormHand
+  name: worm
+  description: A hand mutated into a twisted worm capable of spitting sharp projectiles.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/hand_worm.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Mutations/hand_worm.rsi
+    state: icon
+    size: Normal
+  - type: Gun
+    fireRate: 5
+    selectedMode: SemiAuto
+    angleDecay: 20
+    minAngle: 15
+    maxAngle: 20
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 5
+    count: 1
