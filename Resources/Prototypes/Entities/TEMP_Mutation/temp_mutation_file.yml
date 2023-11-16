@@ -9,7 +9,6 @@
     state: icon
   - type: Clothing
     sprite: Objects/Mutations/leg_suction.rsi
-    state: icon
   - type: NoSlip
   - type: ClothingSpeedModifier
     walkModifier: 0.85
@@ -104,7 +103,6 @@
     state: icon
   - type: Item
     sprite: Objects/Mutations/hand_worm.rsi
-    state: icon
     size: Normal
   - type: Gun
     fireRate: 5
