@@ -123,3 +123,28 @@
     proto: BulletKinetic
     capacity: 5
     count: 1
+
+- type: entity
+  name: solid fist # Возможно придется использовать метод наручников для наложения спрайта на руки, но чтобы не занимать слот перчаток.
+  description: Hard fists with bones, each blow knocking the strength out of the target.
+  id: MutationFleshSolidFist
+  parent: ClothingHandsBase
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: Objects/Mutations/solid_fist.rsi
+    bodyIconState: body-overlay
+  - type: Sprite
+    sprite: Objects/Mutations/solid_fist.rsi
+    state: fist
+  - type: MeleeWeapon
+    animation: WeaponArcFist
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: BoxingHit
+  - type: StaminaDamageOnHit
+    damage: 25
