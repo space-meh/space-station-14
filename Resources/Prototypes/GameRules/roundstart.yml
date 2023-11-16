@@ -103,6 +103,13 @@
   components:
   - type: ZombieRule
 
+- type: entity
+  id: FleshCult
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: FleshCultRule
+
 # event schedulers
 - type: entity
   id: BasicStationEventScheduler

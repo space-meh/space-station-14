@@ -19,6 +19,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly NukeopsRuleSystem _nukeopsRule = default!;
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
     [Dependency] private readonly RevolutionaryRuleSystem _revolutionaryRule = default!;
+    [Dependency] private readonly FleshCultRuleSystem _fleshCultRule = default!;
     [Dependency] private readonly SharedMindSystem _minds = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
 
@@ -120,5 +121,22 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-verb-make-head-rev"),
         };
         args.Verbs.Add(headRev);
+
+        Verb fleshCultist = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-flesh-cultist"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Misc/job_icons.rsi/FleshCultist.png")),
+            Act = () =>
+            {
+                if (!_minds.TryGetMind(args.Target, out var mindId, out var mind))
+                    return;
+
+                _fleshCultRule.MakeFleshCultist(mindId, mind);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-flesh-cultist"),
+        };
+        args.Verbs.Add(fleshCultist);
     }
 }
