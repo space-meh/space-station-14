@@ -570,6 +570,9 @@
   id: HidesHead # for mutations.
 
 - type: Tag
+  id: HidesChest # for mutations.
+
+- type: Tag
   id: HidesLegs # for mutations.
 
 - type: Tag

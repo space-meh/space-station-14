@@ -20,6 +20,8 @@ public abstract class ClothingSystem : EntitySystem
     [ValidatePrototypeId<TagPrototype>]
     private const string HeadTag = "HidesHead";
     [ValidatePrototypeId<TagPrototype>]
+    private const string ChestTag = "HidesChest";
+    [ValidatePrototypeId<TagPrototype>]
     private const string LegsTag = "HidesLegs";
     #endregion
 
@@ -45,6 +47,10 @@ public abstract class ClothingSystem : EntitySystem
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.HeadSide, false);
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.HeadTop, false);
         }
+        if (_tagSystem.HasTag(args.Equipment, ChestTag))
+        {
+            _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.Chest, false);
+        }
         if (_tagSystem.HasTag(args.Equipment, LegsTag))
         {
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.LFoot, false);
@@ -64,6 +70,10 @@ public abstract class ClothingSystem : EntitySystem
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.Head, true);
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.HeadSide, true);
             _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.HeadTop, true);
+        }
+        if (_tagSystem.HasTag(args.Equipment, ChestTag))
+        {
+            _humanoidSystem.SetLayerVisibility(args.Equipee, HumanoidVisualLayers.Chest, true);
         }
         if (_tagSystem.HasTag(args.Equipment, LegsTag))
         {
