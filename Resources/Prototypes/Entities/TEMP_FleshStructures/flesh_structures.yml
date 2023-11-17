@@ -1,0 +1,62 @@
+- type: entity
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  id: FleshLinkingBrain
+  abstract: true
+  name: linking brain
+  description: A living brain in a cocoon of flesh with the ability to create a connection between cultists.
+  components:
+  - type: Sprite
+    sprite: Structures/FleshStructures/linking_brain.rsi
+    snapCardinals: true
+    drawdepth: SmallObjects
+    layers:
+    - state: idle
+      map: ["base"]
+  - type: Icon
+    sprite: Structures/FleshStructures/linking_brain.rsi
+    state: icon
+  - type: Appearance
+  - type: WiresVisuals
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 25
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: EncryptionKeyHolder
+    keysExtractionMethod: Prying
+    keySlots: 1
+  - type: TelecomServer
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+
+- type: entity
+  parent: FleshLinkingBrain
+  id: FleshLinkingBrainFilled
+  suffix: Filled
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScience # Оставлен для проверки работы
