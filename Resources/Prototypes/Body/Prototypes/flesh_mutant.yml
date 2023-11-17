@@ -1,5 +1,5 @@
 - type: body
-  id: Mutant #To do: тестовое, удалить.
+  id: Mutant #TODO: Delete it, for testing only
   name: "mutant"
   root: torso
   slots:

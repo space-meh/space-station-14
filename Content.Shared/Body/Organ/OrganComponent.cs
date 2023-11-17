@@ -12,7 +12,7 @@ public sealed partial class OrganComponent : Component
     /// <summary>
     /// Relevant body this organ is attached to.
     /// </summary>
-    [DataField("body"), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public EntityUid? Body;
 
     /// <summary>

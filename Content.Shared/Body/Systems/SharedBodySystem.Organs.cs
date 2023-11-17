@@ -146,6 +146,8 @@ public partial class SharedBodySystem
         if (!HasComp<BodyPartComponent>(parent))
             return false;
 
+        RemoveOrganActions(organ);
+
         return container.Remove(organId);
     }
 
