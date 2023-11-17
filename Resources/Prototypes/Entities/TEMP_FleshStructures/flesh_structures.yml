@@ -32,19 +32,28 @@
         - TabletopMachineLayer
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 180
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              OrganHumanBrain:
+                min: 1
+                max: 1
   - type: Transform
     anchored: true
   - type: Pullable
   - type: EncryptionKeyHolder
-    keysExtractionMethod: Prying
+    keysUnlocked: false
     keySlots: 1
   - type: TelecomServer
   - type: ContainerContainer
