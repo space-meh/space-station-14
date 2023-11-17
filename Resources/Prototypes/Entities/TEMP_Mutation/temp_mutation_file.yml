@@ -148,3 +148,24 @@
       collection: BoxingHit
   - type: StaminaDamageOnHit
     damage: 25
+
+- type: entity
+  name: scaly mimicry # Использовать с механикой сокрытия частей тела.
+  description: A suit of thin mimicry scales that blend in with their surroundings and are durable in appearance.
+  parent: ClothingUniformBase
+  id: MutationFleshScalyMimicry
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/scaly_mimicry.rsi
+  - type: Clothing
+    sprite: Objects/Mutations/scaly_mimicry.rsi
+  - type: StealthClothing # Работает по нажатию Экшена, а не из-за неподвижности. Возможно придется перейти на компонент Stealth, но на нем сейчас он не работает.
+    visibility: 1.0
+    toggleAction: ActionTogglePhaseCloak
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.9
