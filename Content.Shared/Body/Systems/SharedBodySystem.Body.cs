@@ -185,7 +185,9 @@ public partial class SharedBodySystem
         foreach (var (organSlotId, organProto) in organs)
         {
             var slot = CreateOrganSlot(organSlotId, partId, partComponent);
-            SpawnInContainerOrDrop(organProto, partId, GetOrganContainerId(organSlotId));
+            var organ = SpawnInContainerOrDrop(organProto, partId, GetOrganContainerId(organSlotId));
+
+            AddOrganActions(partComponent.Body, Comp<OrganComponent>(organ));
 
             if (slot == null)
             {

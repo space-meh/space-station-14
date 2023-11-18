@@ -1,0 +1,14 @@
+- type: entity
+  id: OrganMutantEyes
+  parent: BaseHumanOrgan
+  name: mutated eyes
+  description: Meaty chunks that were once eyes.
+  components:
+  - type: Organ
+    organActions:
+    - ActionBlink
+  - type: Sprite
+    layers:
+    - state: ears #test
+    - state: eyeball-r
+

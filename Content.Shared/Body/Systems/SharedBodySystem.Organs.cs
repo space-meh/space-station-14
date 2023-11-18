@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Actions;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;
@@ -9,6 +10,8 @@ namespace Content.Shared.Body.Systems;
 
 public partial class SharedBodySystem
 {
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
+
     private void AddOrgan(EntityUid uid, EntityUid bodyUid, EntityUid parentPartUid, OrganComponent component)
     {
         component.Body = bodyUid;
@@ -17,6 +20,7 @@ public partial class SharedBodySystem
         if (component.Body != null)
             RaiseLocalEvent(uid, new AddedToPartInBodyEvent(component.Body.Value, parentPartUid));
 
+        AddOrganActions(uid, component);
         Dirty(uid, component);
     }
 
@@ -29,9 +33,37 @@ public partial class SharedBodySystem
             RaiseLocalEvent(uid, new RemovedFromPartInBodyEvent(component.Body.Value, parentPartUid));
         }
 
+        RemoveOrganActions(component);
+
         component.Body = null;
         Dirty(uid, component);
     }
+
+    private void AddOrganActions(EntityUid? mobUid, OrganComponent? component)
+    {
+        if (mobUid == null || component == null)
+            return;
+
+        foreach (var action in component.OrganActions)
+        {
+            var newAction = _actions.AddAction(mobUid.Value, action);
+            if (newAction != null)
+                component.OrganSpawnedActions.Add(newAction.Value);
+        }
+    }
+
+    private void RemoveOrganActions(OrganComponent? component)
+    {
+        if (component == null)
+            return;
+
+        foreach (var action in component.OrganSpawnedActions)
+        {
+            _actions.RemoveAction(action);
+        }
+        component.OrganSpawnedActions.Clear();
+    }
+
 
     /// <summary>
     /// Creates the specified organ slot on the parent entity.
@@ -113,6 +145,8 @@ public partial class SharedBodySystem
 
         if (!HasComp<BodyPartComponent>(parent))
             return false;
+
+        RemoveOrganActions(organ);
 
         return container.Remove(organId);
     }
