@@ -69,3 +69,68 @@
     containers:
       key_slots:
       - EncryptionKeyScience # Оставлен для проверки работы
+
+- type: entity
+  parent: BaseLightStructure
+  id: FleshLamp
+  name: flesh lamp
+  description: "An always powered light."
+  suffix: Always Powered
+  components:
+  - type: Sprite
+    sprite: Structures/FleshStructures/flesh_lamp.rsi
+    snapCardinals: true
+    noRot: true
+    layers:
+    - state: on1
+    - state: lightning
+      shader: unshaded
+  - type: PointLight
+    radius: 10
+    energy: 0.8
+    softness: 1
+    color: "#a69f26"
+    offset: "0, -0.5"
+
+- type: entity
+  parent: FleshLamp
+  id: FleshLamp2
+  components:
+  - type: Sprite
+    sprite: Structures/FleshStructures/flesh_lamp.rsi
+    snapCardinals: true
+    noRot: true
+    layers:
+    - state: on2
+    - state: lightning
+      shader: unshaded
+
+- type: entity
+  parent: BaseWall
+  id: WallFlesh
+  name: flesh wall
+  description: A terrifying wall of flesh.
+  components:
+  - type: Tag
+    tags:
+      - RCDDeconstructWhitelist
+      - Wall
+      - Structure
+  - type: Sprite
+    sprite: Structures/Walls/flesh.rsi
+  - type: Icon
+    sprite: Structures/Walls/flesh.rsi
+  - type: Construction
+    graph: Girder
+    node: bananiumWall
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: IconSmooth
+    key: walls
+    base: flesh
