@@ -25,3 +25,12 @@
   parent: BaseSpeciesDummy
   id: MobHumanDummy
   noSpawn: true
+
+- type: entity # To do: Удалить этого тестового челика.
+  parent: BaseMobHuman
+  id: BaseTestMutant
+  name: Urist FleshEyes
+  components:
+  - type: Body
+    prototype: Mutant
+    requiredLegs: 2

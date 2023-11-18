@@ -1,0 +1,148 @@
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesMutationSuction
+  name: suctions
+  description: Sticky suction cups wriggling, greedily drinking the blood spilled beneath your feet.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/leg_suction.rsi
+    state: icon
+  - type: Clothing
+    sprite: Objects/Mutations/leg_suction.rsi
+  - type: NoSlip
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.8
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesMutationSpider
+  name: spider legs
+  description: Spider legs woven from meat. You can see bones sticking out from the inside in some places.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/leg_spider.rsi
+    state: icon
+  - type: Clothing
+    sprite: Objects/Mutations/leg_spider.rsi
+  - type: NoSlip
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.2
+  - type: Tag
+    tags:
+    - HidesLegs
+
+- type: entity
+  name: flesh blade
+  parent: ArmBlade
+  id: MutationFlashBlade
+  description: A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/hand_flash_blade.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 270
+    attackRate: 0.75
+    damage:
+      types:
+        Slash: 25
+        Piercing: 15
+  - type: Item
+    sprite: Objects/Mutations/hand_flash_blade.rsi
+
+- type: entity
+  parent: Clothing
+  id: ClothingBackMutationAnce
+  name: ance
+  description: Giant pimples filled with viscous fluid.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/backpack_ance.rsi
+    state: icon
+  - type: Item
+    size: Huge
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadMutationHeadSnake
+  name: snake head
+  description: A fleshy head remotely resembling a predatory snake.
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/head_snake.rsi
+  - type: Clothing
+    sprite: Objects/Mutations/head_snake.rsi
+  - type: Tag
+    tags:
+    - HidesHair
+    - HidesHead
+  
+- type: entity
+  name: spiked bone shield
+  parent: BaseShield
+  id: MutationHandBoneShield
+  description: A sturdy spiked bone shield, with thin veins of flesh between the bones.
+  components:
+    - type: Sprite
+      sprite: Objects/Mutations/hand_bone_shield.rsi
+      state: spiked-icon
+    - type: Item
+      sprite: Objects/Mutations/hand_bone_shield.rsi
+      size: Ginormous
+      heldPrefix: spiked
+    - type: Blocking
+      passiveBlockModifier:
+        coefficients:
+          Blunt: 0.8
+          Slash: 0.8
+          Piercing: 0.85
+          Heat: 0.8
+      activeBlockModifier:
+        coefficients:
+          Blunt: 0.6
+          Slash: 0.6
+          Piercing: 0.7
+          Heat: 0.5
+        flatReductions:
+          Blunt: 1
+          Slash: 1
+          Piercing: 1
+          Heat: 1
+
+- type: entity
+  id: MutationWormHand
+  name: worm
+  description: A hand mutated into a twisted worm capable of spitting sharp projectiles.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Mutations/hand_worm.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Mutations/hand_worm.rsi
+    size: Normal
+  - type: Gun
+    fireRate: 5
+    selectedMode: SemiAuto
+    angleDecay: 20
+    minAngle: 15
+    maxAngle: 20
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 5
+    count: 1
