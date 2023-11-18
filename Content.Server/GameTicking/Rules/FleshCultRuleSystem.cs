@@ -43,6 +43,7 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
             rule = Comp<FleshCultRuleComponent>(ruleEnt);
         }
 
+        // TODO: Ignore NOT people, or make the target a person?
         if (!HasComp<HeadRevolutionaryComponent>(mind.OwnedEntity))
         {
             if (mind.OwnedEntity != null)
@@ -79,6 +80,7 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out var comp, out _))
         {
+            // TODO: While he will take any race, this needs to be redone in the future.
             _antagSelection.EligiblePlayers(comp.FleshCultistPrototypeId, comp.MaxFleshCultists, comp.PlayersPerCultist, comp.FleshCultistStartSound, "flesh-cult-role-greeting", "#ae424a", out var chosen);
 
             if (chosen.Count > 0)
@@ -101,6 +103,7 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
 
     private void GiveFleshCultist(EntityUid chosen, FleshCultRuleComponent comp)
     {
+        // TODO: We should also remember his organs here.
         var inCharacterName = MetaData(chosen).EntityName;
         if (_mind.TryGetMind(chosen, out var mindId, out var mind))
         {

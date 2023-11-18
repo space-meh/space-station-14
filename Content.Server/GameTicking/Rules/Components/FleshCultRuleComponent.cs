@@ -24,6 +24,7 @@ public sealed partial class FleshCultRuleComponent : Component
     [DataField]
     public int PlayersPerCultist = 10;
 
+    // TODO: I don’t even know what quantity will be OK.
     [DataField]
     public int MaxFleshCultists = 10;
 
