@@ -13,6 +13,7 @@ public sealed class FleshCultSystem : AntagStatusIconSystem<FleshCultistComponen
         SubscribeLocalEvent<FleshCultistComponent, GetStatusIconsEvent>(GetIcon);
     }
 
+    // TODO: Does the ability to see the icons of other cultists become available from changing mutations?
     private void GetIcon(Entity<FleshCultistComponent> fleshCult, ref GetStatusIconsEvent args)
     {
         GetStatusIcon(fleshCult.Comp.FactionPrototypeId, ref args);

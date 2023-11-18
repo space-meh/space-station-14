@@ -9,9 +9,6 @@ public sealed partial class FleshCultRuleComponent : Component
 {
     public const string RuleId = "FleshCult";
 
-    [DataField]
-    public Dictionary<string, EntityUid> FleshCultists = new();
-
     /// <summary>
     /// This includes the cultist player himself. Count of ready players to start the mode.
     /// </summary>
