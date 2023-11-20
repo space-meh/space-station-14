@@ -95,3 +95,10 @@
   color: "#f6ce64"
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
   longRange: true
+
+- type: radioChannel
+  id: Flesh
+  name: chat-radio-flesh
+  keycode: 'l'
+  frequency: 3786 # порядковый номер буквы в алфавите, с применением золотого сечения, после чего выбираем первые четыре цифры. если убрать строку frequency, будет частота 0
+  color: "#c02c4b"

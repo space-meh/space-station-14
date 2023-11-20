@@ -243,3 +243,18 @@
       layers:
         - state: crypt_rusted
         - state: pirate_label
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyFlesh
+  name: flesh encryption key #  не должно существовать, но абстрация не дает работать телекому плоти
+  description: Flesh of your flesh.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Flesh
+    defaultChannel: Flesh
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: cargo_label
