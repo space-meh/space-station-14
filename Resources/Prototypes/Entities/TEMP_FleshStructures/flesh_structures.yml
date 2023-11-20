@@ -117,20 +117,56 @@
       - Wall
       - Structure
   - type: Sprite
-    sprite: Structures/Walls/flesh.rsi
+    sprite: Structures/Walls/flesh_wall.rsi
   - type: Icon
-    sprite: Structures/Walls/flesh.rsi
-  - type: Construction
-    graph: Girder
-    node: bananiumWall
+    sprite: Structures/Walls/flesh_wall.rsi
+  - type: Damageable
+    damageContainer: Biological # генетический урон для строений плоти? Допустим
+    damageModifierSet: Metallic # временный вариант, пока не выберем демедж для Плоти
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 200
+        damage: 400
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: IconSmooth
     key: walls
     base: flesh
+
+- type: entity
+  id: FleshDoor
+  name: flesh door
+  parent: BaseMaterialDoor
+  description: At the sight of this... door, it looks like it's breathing.
+  components:
+  - type: AccessReader
+    access: [["Chapel"]] # для культистов нужен свой доступ, иначе дверь будет открываться всем
+  - type: Sprite
+    sprite: Structures/FleshStructures/flesh_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openSound:
+      path: /Audio/Effects/door_open.ogg # заменить звук
+    closeSound:
+      path: /Audio/Effects/door_close.ogg # заменить звук
+  - type: Damageable
+    damageContainer: Biological # генетический урон для строений плоти? Допустим
+    damageModifierSet: Metallic # временный вариант, пока не выберем демедж для Плоти
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
