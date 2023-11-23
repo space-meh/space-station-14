@@ -20,6 +20,13 @@
     state: HeadRevolutionary
 
 - type: statusIcon
+  id: FleshCultistFaction
+  priority: 11
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: FleshCultist
+
+- type: statusIcon
   id: SyndicateFaction
   priority: 0
   locationPreference: Left 
