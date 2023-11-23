@@ -249,6 +249,7 @@
   id: EncryptionKeyFlesh
   name: flesh encryption key #  не должно существовать, но абстрация не дает работать телекому плоти
   description: Flesh of your flesh.
+  suffix: DO NOT MAP
   components:
   - type: EncryptionKey
     channels:
