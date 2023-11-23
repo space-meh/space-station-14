@@ -114,3 +114,15 @@
   rules:
     - Pirates
     - BasicStationEventScheduler
+
+- type: gamePreset
+  id: FleshCult
+  alias:
+    - fleshCult
+    - cultists
+  name: flesh-cult-title
+  description: flesh-cult-description
+  showInVote: false
+  rules:
+    - FleshCult
+    - BasicStationEventScheduler
