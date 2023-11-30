@@ -83,3 +83,17 @@
   - Zombie
   - SimpleHostile
   - Dragon
+
+- type: npcFaction
+  id: Flesh
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Passive
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - Dragon
+  - SimpleNeutral
+  - SimpleHostile
+  - Xeno
